@@ -1,0 +1,669 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<style>
+		.reveal h2{color: yellow;}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			
+<section data-background-image="assets/vector.jpg" data-background-position="50% 50%" data-background-repeat="no-repeat" data-background-size="cover">
+	<h1>Introduzione ai CSS</h1>
+	<p>giorgio.beggiora@artigianidelweb.com</p>
+	
+	<table border="0" cellpadding="0" cellspacing="0" style="background: rgba(255,255,255,0.3);"><tr>
+		<td style="padding: 1vw 1vw ; vertical-align: middle;"><img src="assets/github.png" height="40vw" class="plain" style="background: none; margin: 0; display: block;" valign="middle"></td>
+		<td style="padding: 1vw 1vw ; vertical-align: middle;"><img src="assets/twitter.png" height="40vw" class="plain" style="background: none; margin: 0; display: block;" valign="middle"></td>
+		<td style="padding: 1vw 1vw ; vertical-align: middle; color: black;">giorgiobeggiora</td>
+		</tr>
+	</table>
+	
+</section>
+
+<section data-background-image="assets/cssback.jpg" data-background-position="50% 50%" data-background-repeat="no-repeat" data-background-size="cover">
+	<div style="text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);-webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; transform: rotate(-5deg);">
+	<h2><span style="color:red;font-size:200%;">C</span>ansei de <span style="color:red;font-size:200%;">S</span>er <span style="color:red;font-size:200%;">S</span>exy</h2>
+	<p style="font-weight: bold; text-transform: uppercase;">Sono un gruppo musicale<br>brasiliano di San Paolo<br>prodotto dalla Sub Pop</p>
+	<p><a style="font-weight: bold; -webkit-text-stroke-width: 1px; -webkit-text-stroke-color: black; color: aqua;" href="https://www.youtube.com/watch?v=7agPOt1XZz8" style="color: white;">https://www.youtube.com/watch?v=7agPOt1XZz8</a></p>
+	</div>
+</section>
+
+<section>
+	<h3>CSS</h3>
+	<blockquote>Quel linguaggio che serve a fare la grafica</blockquote>
+	<p class="fragment" align="right"><em>Giorgio Beggiora - 2001</em></p>
+</section>
+
+<section>
+	<h3>Cascading Style Sheets</h3>
+	<p>CSS specifica uno schema di priorità per determinare quali regole di stile si applicano, se più di una regola corrisponde ad un particolare elemento. In questa cosiddetta "cascata", priorità o pesi sono calcolati e assegnati alle regole, in modo che i risultati siano prevedibili.</p>
+</section>
+
+<section>
+	<h3>Perchè usare i CSS?</h3>
+	<ul>
+	<li>Consentono di separare la grafica dal contenuto e dalla logica</li>
+	<li>Sono scalabili e riutilizzabili da più pagine</li>
+	<li>Sono molto più veloci e performanti di HTML e JavaScript</li>
+	<li>La loro efficienza può migliorare l'esperienza mobile</li>
+	</ul>
+</section>
+
+<section>
+	<h2>Come funzionano i CSS</h2>
+</section>
+
+
+<section>
+	<h3>SEMPLICE PAGINA HTML</h3>
+	<pre><code>&lt;!doctype html>
+&lt;html lang="it">
+  &lt;head>
+    &lt;meta charset="utf-8" />
+    <title>Demo CSS</title>
+  &lt;/head>
+  &lt;body>
+    <ul>
+      <li>uno</li>
+      <li>due</li>
+      <li>tre</li>
+      <li>quattro</li>
+    </ul>
+  &lt;/body>
+&lt;/html>
+</code></pre>
+</section>
+
+<section>
+	<h3>COME APPLICARE LE REGOLE</h3>
+	<ul>
+	<li>
+	Inline<br>
+	<pre><code><a href="/" style="color:lime;background:gray;">
+  Home
+</a></code></pre>
+	</li>
+	<li>
+		tag &lt;style&gt; (preferibilmente nel tag &lt;head&gt;)<br>
+		<pre><code><style>
+  body{margin: 0; background-color: silver;}
+  a{text-decoration: none;}
+</style></code></pre>
+	</li>
+	<li>
+		tag &lt;link&gt; (preferibilmente nel tag &lt;head&gt;)<br>
+		<pre><code><link rel="stylesheet" href="/path/to/file.css"></code></pre>
+	</li>
+	<li>@import (come prima istruzione di un file css)
+	<pre><code>@import "/path/to/file.css";</code></pre></li>
+	</ul>
+</section>
+
+<section>
+<section>
+	<h3>SELETTORI</h3>
+</section>
+
+<section>
+	<h3>NOME DEL TAG</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+span{color: red;}
+</style></code></pre>
+<pre><code><ul>
+  <li>uno</li>
+  <li><span>due</span></li>
+  <li>tre</li>
+  <li><span>quattro</span></li>
+</ul></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span></li>
+			<li>tre</li>
+			<li><span style="color:red;">quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+<section>
+	<h3>CLASSE</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+.evidenza{color: red;}
+</style></code></pre>
+<pre><code><ul>
+  <li class="wp">uno</li>
+  <li class="wp evidenza"><span>due</span></li>
+  <li class="wp">tre</li>
+  <li class="wp evidenza"><span>quattro</span></li>
+</ul></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span></li>
+			<li>tre</li>
+			<li><span style="color:red;">quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+<section>
+	<h3>ID</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+#evidenza{color: red;}
+</style></code></pre>
+<pre><code><ul>
+  <li>uno</li>
+  <li><span>due</span></li>
+  <li>tre</li>
+  <li id="evidenza"><span>quattro</span></li>
+</ul></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span>due</span></li>
+			<li>tre</li>
+			<li><span style="color:red;">quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+<section>
+	<h3>ATTRIBUTO</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+[title="Numero 2"]{color: red;}
+</style></code></pre>
+<pre><code><ul>
+  <li title="Numero 1">uno</li>
+  <li title="Numero 2"><span>due</span></li>
+  <li title="Numero 3">tre</li>
+  <li title="Numero 4"><span>quattro</span></li>
+</ul></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span></li>
+			<li>tre</li>
+			<li><span>quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+</section>
+
+<section>
+<section>
+	<h3>PSEUDO-CLASSI</h3>
+</section>
+
+<section>
+	<h3>POSIZIONE</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+li:nth-child(3){color: red;}
+</style></code></pre>
+<pre><code><ul>
+  <li>uno</li>
+  <li><span>due</span></li>
+  <li>tre</li>
+  <li><span>quattro</span></li>
+</ul></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span>due</span></li>
+			<li style="color:red;">tre</li>
+			<li><span>quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+
+<section>
+<style>#lihover li:hover{color:red;}</style>
+	<h3>STATO</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+li:hover{color: red;}
+</style></code></pre>
+<pre><code><ul>
+  <li>uno</li>
+  <li><span>due</span></li>
+  <li>tre</li>
+  <li><span>quattro</span></li>
+</ul></code></pre>
+		</td>
+		<td><ul id="lihover">
+			<li>uno</li>
+			<li><span>due</span></li>
+			<li>tre</li>
+			<li><span>quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+
+<section>
+	<h3>ALTRI ESEMPI</h3>
+	<p>
+:empty<br>
+:checked<br>
+:enabled<br>
+:disabled<br>
+:focus<br>
+:active<br>
+:link<br>
+:visited
+	</p>
+</section>
+</section>
+
+
+
+<section>
+<section>
+	<h3>LA CASCATA</h3>
+</section>
+
+<section>
+	<h3>Parentela</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+li > .evidenza{color: red;}
+</style></code></pre>
+<pre><code><span>
+  <ul>
+    <li class="evidenza">uno</li>
+    <li><span class="evidenza">due</span></li>
+    <li>tre</li>
+    <li>quattro</li>
+  </ul>
+</span></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span></li>
+			<li>tre</li>
+			<li>quattro</li>
+		</ul></td>
+	</tr></table>
+</section>
+
+<section>
+	<h3>VINCE IL PIU' SPECIFICO</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+span{color: yellow;}
+span{color: green;}
+ul li span{color: purple;}
+ul li:nth-child(2) span{color: lime;}
+ul span{color: red !important;}
+</style></code></pre>
+<pre><code><span>
+  <ul>
+    <li>uno</li>
+    <li><span>due</span></li>
+    <li>tre</li>
+    <li><span>quattro</span></li>
+  </ul>
+</span></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span></li>
+			<li>tre</li>
+			<li><span style="color:red;">quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+<section>
+	<h3>condiviso</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+.evidenza, .errore{color: red;}
+</style></code></pre>
+<pre><code><span>
+  <ul>
+    <li>uno</li>
+    <li><span class="evidenza">due</span></li>
+    <li>tre</li>
+    <li><span class="errore">quattro</span></li>
+  </ul>
+</span></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span></li>
+			<li>tre</li>
+			<li><span style="color:red;">quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+<section>
+	<h3>un esempio più complesso</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+#lista .evidenza span:first-child{color: red;}
+</style></code></pre>
+<pre><code><span>
+  <ul id="lista">
+    <li>uno</li>
+    <li class="evidenza">
+      <span>due</span>
+      <span>bis</span>
+    </li>
+    <li>tre</li>
+    <li><span>quattro</span></li>
+  </ul>
+</span></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span> bis</li>
+			<li>tre</li>
+			<li><span>quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+
+
+<section>
+	<h3>senza spazi = nello stesso tag</h3>
+	<table><tr>
+		<td width="100%" style="vertical-align:top;">
+<pre><code><style>
+span#due.evidenza{color: red;}
+</style></code></pre>
+<pre><code><span>
+  <ul id="lista">
+    <li class="evidenza">uno</li>
+    <li class="evidenza">
+      <span id="due" class="evidenza">due</span>
+    </li>
+    <li class="evidenza">tre</li>
+    <li class="evidenza"><span>quattro</span></li>
+  </ul>
+</span></code></pre>
+		</td>
+		<td><ul>
+			<li>uno</li>
+			<li><span style="color:red;">due</span></li>
+			<li>tre</li>
+			<li><span>quattro</span></li>
+		</ul></td>
+	</tr></table>
+</section>
+</section>
+
+<section>
+	<h3>Ci vediamo su:</h3>
+	<ul>
+	<li>MDN<br><a href="http://developer.mozilla.org">developer.mozilla.org</a></li>
+	<li>CSS-TRICKS<br><a href="http://css-tricks.com">css-tricks.com</a></li>
+	<li>CAN I USE<br><a href="http://caniuse.com">caniuse.com</a></li>
+	<li class="fragment">...e su quel forum<br>che non serve neanche<br>nominare...</li>
+	</ul>
+</section>
+
+
+<section>
+	<h2>CSS e JS</h2>
+</section>
+
+<section>
+<h3>Camel syntax</h3>
+<pre><code>&lt;script>
+var element = document.getElementById('contenuto');
+element.style.fontSize = '12px';
+element.className = 'hello ciao salut hola';
+element.setAttribute('style', 'font-weight: bold; color: red;');
+var style = window.getComputedStyle(element);
+&lt;/script></code></pre>
+</section>
+
+<section>
+	<h2>Compatibilità browser</h2>
+</section>
+
+<section>
+	<h3></h3>
+	Una volta c'erano gli hack, filter, conditional comments.<br><br>
+	Oggi ci sono i vendor prefix:<br>
+	<pre><code>&lt;style>
+-webkit-opacity: 0.7;
+-moz-opacity: 0.7;
+-ms-opacity: 0.7;
+opacity: 0.7;
+&lt;/style></code></pre>
+	Se un browser non supporta una funzione si tende a non implementarla: è veramente così importante che un sito si veda identico su tutti i browser, a scapito della velocità?
+</section>
+
+<section>
+	<h2>CSS nelle email</h2>
+</section>
+
+<section>
+	<h3>BACK TO THE FUTURE</h3>
+	<p>Siamo fermi da 15 anni</p>
+</section>
+
+<section>
+	<h2>Usare i font</h2>
+</section>
+
+<section>
+	<h3>woff</h3>
+	<p>@font-face</p>
+</section>
+
+<section>
+	<h2>Layout</h2>
+</section>
+
+<section>
+	<h3>Box model</h3>
+<pre><code>div {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 1px;
+  margin: 10px;
+}</code></pre>
+<pre><code>html{
+  box-sizing: border-box;
+}
+*, *:before, *:after{
+  box-sizing: inherit;
+}</code></pre>
+</section>
+
+
+<section>
+	<h3>Float layout</h3>
+<pre><code>div {
+  display: block;
+  float: left;
+}
+</code></pre>
+</section>
+
+<section>
+	<h3>Flexible layout</h3>
+<pre><code>div {
+  display: flex;
+}</code></pre>
+</section>
+
+<section>
+	<h3>Table layout</h3>
+<pre><code>div {
+  display: table;
+}</code></pre>
+</section>
+
+<section>
+	<h3>Responsive</h3>
+<pre><code>@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
+}</code></pre>
+</section>
+
+<section>
+	<h2>Transizioni e animazioni</h2>
+</section>
+
+<section>
+<pre><code>a:hover{
+  color: red;
+  transition-delay: 0.6s;
+}</code></pre>
+<pre><code>p {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}</code></pre>
+</section>
+
+<section>
+	<h2>LESS & SASS</h2>
+</section>
+
+<section>
+	<h3>Preprocessori</h3>
+	<p>Servono per sopperire alle mancanze di CSS se paragonato ad un vero linguaggio di programmazione.</p>
+	<p>Tipicamente si scrive codice simil-css mentre un software monitora la cartella che contiene i file e ad ogni salvataggio li elabora per produrre file css validi.</p>
+	<p>LESS e SASS sono due sintassi diverse.</p>
+</section>
+
+<section>
+	<h3>Vantaggi</h3>
+	<p><a href="http://sass-lang.com/">http://sass-lang.com/guide</a></p>
+	<ul>
+	<li>Variable</li>
+	<li>Nesting</li>
+	<li>Import & Partial</li>
+	<li>Mixin (functions)</li>
+	<li>Extend (inheritance)</li>
+	<li>Operation, Logic, Loop</li>
+	<li>Utility (funzioni, nuovi selettori, data type, ecc)</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Svantaggi</h3>
+	<ul>
+	<li>Serve un software che crei i file css</li>
+	<li>È necessario mantenere i file sorgenti</li>
+	</ul>
+</section>
+
+<section>
+	<h3>Differenze</h3>
+	<p><a href="https://css-tricks.com/sass-vs-less/">https://css-tricks.com/sass-vs-less/</a></p>
+	<ul>
+	<li>Sono parecchio "tecniche". Si dice che...</li>
+	<li class="fragment">LESS sia leggermente più facile da imparare</li>
+	<li class="fragment">LESS sia più veloce nella compilazione</li>
+	<li class="fragment">SASS sia più strutturato</li>
+	<li class="fragment">Il mio consiglio per chi comincia è...</li>
+	<li class="fragment">SASS!</li>
+	</ul>
+</section>
+
+<section>
+	<h3>SEMPLICI PREPROCESSORI GRATUITI ED OPEN-SOURCE</h3>
+	<p><em>windows, linux, mac</em><p>
+	<ul>
+		<li>
+			Koala - <a href="http://koala-app.com/" target="_blank">http://koala-app.com/</a><br>
+			Less, Sass, Compass, CoffeeScript<br>
+			<br>
+		</li>
+		<li>
+			Scout - <a href="http://scout-app.io/" target="_blank">http://scout-app.io/</a><br>
+			Sass<br>
+			<br>
+		</li>
+	</ul>
+</section>
+
+<section data-background-image="assets/cssplanta.jpg" data-background-position="50% 0%" data-background-repeat="no-repeat" data-background-size="cover">
+	<h2 style="background: rgba(255,255,255,0.7);color:black;">Grazie</h2>
+	<p style="background: rgba(255,255,255,0.7);color:black;">giorgio.beggiora@artigianidelweb.com</p>
+	
+	<div style="background: rgba(255,255,255,0.7);"><table border="0" cellpadding="0" cellspacing="0"><tr>
+		<td style="padding: 1vw 1vw ; vertical-align: middle;"><img src="assets/github.png" height="40vw" class="plain" style="background: none; margin: 0; display: block;" valign="middle"></td>
+		<td style="padding: 1vw 1vw ; vertical-align: middle;"><img src="assets/twitter.png" height="40vw" class="plain" style="background: none; margin: 0; display: block;" valign="middle"></td>
+		<td style="padding: 1vw 1vw ; vertical-align: middle; color: black;">giorgiobeggiora</td>
+		</tr>
+	</table></div>
+</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
